@@ -1,139 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("heart-bg.jpg");
-    font-family: "Pixelify Sans", sans-serif;
-}
-
-/* Envelope Screen */
-#envelope-container {
-    text-align: center;
-    cursor:pointer;
-}
-
-@keyframes pulse {
-    0% {
-        transform:scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-#envelope{
-    width: 200px;
-    animation: pulse 1.5s infinite;
-    cursor: pointer;
-}
-
-#letter-container{
-    display: none;
-    position:fixed;
-    inset: 0;
-    justify-content: center;
-    align-items: center;
-}
-
-.letter-window{
-    width: 90vw;
-    max-width: 800px;
-    aspect-ratio: 3/2;
-    padding: 20px 20px 0 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-image: url("window.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 12px;
-    gap: 1px;
-    padding-top: 180px;
-
-    transform: scale(1.2);
-    opacity: 0;
-    transition: transform 0.6s ease, opacity 0.6s ease;
-}
-
-.letter-window.open {
-    transform: scale(1);
-    opacity: 1;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #ffd6e7, #ffc2dd);
+  overflow: hidden;
 }
 
 h1 {
-    font-size: 30px;
-    margin:0;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-p {
-    font-size: 40px;
-}
-
-/* Cat */
-
-.cat {
-    width: 250px;
-    margin: 10px 0;
-    transition: width 0.4s ease;
-}
-
-.letter-window.final .cat {
-    width: 180px;
-}
-
-/* buttons */
 .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    position: relative;
+  position: relative;
+  width: 400px;
+  height: 200px;
 }
 
-.no-wrapper{
-    position:relative;
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.btn {
-    width: 120px;
-    cursor: pointer;
-    user-select: none;
+#yesBtn {
+  background-color: #ff4d88;
+  color: white;
 }
 
-.yes-btn,
-.no-btn {
-width: 120px;
-height: auto;
-display: inline-block;
+#noBtn {
+  background-color: #888;
+  color: white;
+  position: absolute;
+  left: 60%;
+  top: 60%;
+  transform: translate(-50%, -50%);
 }
 
-.yes-btn {
-    position: relative;
-    z-index: 2;
-    transform-origin: center center;
-    transition: transform 0.3s ease;
+#message {
+  margin-top: 20px;
+  font-size: 18px;
 }
 
-.no-btn {
-    z-index: 1;
-    position: relative;
-    transition: transform 0.15s ease;
-    cursor: default;
+/* HEARTS */
+
+#heartsLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
 }
 
-.final-text{
-    font-size: 22px;
-    line-height: 1.4;
-    text-align: center;
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: rgba(255,240,240,0.5);
-    border-radius: 12px;
+.heart {
+  position: absolute;
+  font-size: 24px;
+  animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -150px) scale(1.6);
+  }
 }
