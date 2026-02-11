@@ -4,7 +4,6 @@ const message = document.getElementById("message");
 const question = document.getElementById("question");
 const area = document.getElementById("buttonArea");
 const heartsLayer = document.getElementById("heartsLayer");
-const loveSong = document.getElementById("loveSong");
 
 // ✅ Change these two to personalize
 const HIS_NICKNAME = "babe";        // e.g. "Alex", "my love", "handsome"
