@@ -6,12 +6,12 @@ const area = document.getElementById("buttonArea");
 const heartsLayer = document.getElementById("heartsLayer");
 
 // ✅ Change these two to personalize
-const HIS_NICKNAME = "babe";        // e.g. "Alex", "my love", "handsome"
+const HIS_NICKNAME = "Likhu";        // e.g. "Alex", "my love", "handsome"
 const VIBE = "romantic";            // soft / funny / chaotic / romantic
 
 let noClicks = 0;
 let yesScale = 1;
-let songStarted = false;
+
 
 // Question changes after each No click
 const questionSteps = [
@@ -70,15 +70,7 @@ function spawnHeartsBurst(count = 20) {
   }
 }
 
-async function playSongOnce() {
-  if (songStarted) return;
-  songStarted = true;
-  try {
-    await loveSong.play();
-  } catch (e) {
-    message.textContent = "If the song didn’t play, tap Yes again 💖 (phones can be picky).";
-  }
-}
+
 
 // Set the starting question with his nickname
 setQuestionText();
@@ -108,7 +100,7 @@ noBtn.addEventListener("click", () => {
 });
 
 yesBtn.addEventListener("click", async () => {
-  await playSongOnce();
+
   spawnHeartsBurst(26);
 
   const chosen = vibeYesMessages[VIBE] || vibeYesMessages.romantic;
